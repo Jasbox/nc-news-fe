@@ -32,5 +32,14 @@ export function fetchComments(article_id) {
   }
 
 export function deleteComment(comment_id) {
-    return newsApi.delete(`/comments/${comment_id}`)
+    return newsApi.delete(`/comments/${comment_id}`).then(()=> {})
+}
+
+export function postComment(article_id, body, username) {
+    return newsApi.post(`/articles/${article_id}/comments`, {
+        body: body,
+        username: username,
+    }).then(({data}) => {
+        return data.comment
+    })
 }

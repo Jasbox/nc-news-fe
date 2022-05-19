@@ -13,7 +13,7 @@ export default function Article({ showComments }) {
     showComments = false;
   }
 
-  const [isCommentVisible, setIsCommentVisible] = useState(showComments);
+  const [isCommentVisible, setIsCommentVisible] = useState(true);
 
   function getShowComments() {
     if (isCommentVisible === true) {

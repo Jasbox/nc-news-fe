@@ -1,12 +1,14 @@
 
 import { useContext, useEffect, useState } from "react";
-import { fetchComments } from "../../api";
+import { fetchComments, deleteComment} from "../../api";
 import { UserContext } from "../User/UserContext";
-import { deleteComment } from "../../api";
+
+import PostComment from "./PostComment";
 
 export default function Comments({ article_id }) {
   const [comments, setComments] = useState([]);
   const {users} = useContext(UserContext)
+  const [postedComment, SetPostedComment] = useState(false)
 
   useEffect(() => {
     fetchComments(article_id).then((comments) => {
@@ -19,14 +21,32 @@ export default function Comments({ article_id }) {
         return(
             <button onClick={()=> {
                 deleteComment(comment_id)
+                setComments(comments => {
+                    return comments.filter(comment => {
+                        return comment.comment_id !== comment_id
+                    })
+                })
                 alert("comment deleted")
             }}>Delete</button>
         )
     }
   }
 
+  function showPostedComment() {
+      if( users === undefined) {
+          return <p>only logged in users can comment 😊 </p>
+      } else if (postedComment) {
+          return <PostComment article_id={article_id} setComments={setComments}/>
+      }
+  }
+
   return (
     <div>
+        <button onClick={()=>{
+            SetPostedComment(!postedComment)
+        }}>Comment is free...</button>
+        {showPostedComment()}
+
       {comments.map((comment) => {
           const date = new Date(comment.created_at);
         return (
