@@ -24,7 +24,7 @@ function App() {
       <Route path='/topics' element={<ArticleList />} />
       <Route path='/topics/:topic' element={<ArticleList />} />
       <Route path='/articles/:article_id' element={<Article />} />
-      <Route path='/articles/:article_id/comments' element={<Article showComments={true} />}
+      <Route path='/articles/:article_id/comments' element={<Article  />}
           />
     </Routes>
     
