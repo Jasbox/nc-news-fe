@@ -44,6 +44,7 @@ export default function Article({ showComments }) {
       <div>
         <b>{article.votes} votes</b> | <b>💬{article.comment_count} comments</b>
       </div>
+          
       <button
         onClick={() => {
           setIsCommentVisible(!isCommentVisible);
