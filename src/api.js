@@ -30,3 +30,7 @@ export function fetchComments(article_id) {
       return data.comments;
     });
   }
+
+export function deleteComment(comment_id) {
+    return newsApi.delete(`/comments/${comment_id}`)
+}
