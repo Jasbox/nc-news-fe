@@ -9,21 +9,20 @@ export default function PostComment({ article_id, setComments }) {
     <form
       onSubmit={(event) => {
         event.preventDefault();
-        setUserComment("");
-        postComment(article_id, userComment, users).then(comment => {
-            return setComments(currComments => {
-                return [
-                    comment,
-                    ...currComments
-                ]
-            })
-        });
-        alert("comment posted!");
-       
+        if (userComment === "") {
+          return "need comment";
+        } else {
+          setUserComment("");
+          postComment(article_id, userComment, users).then((comment) => {
+            return setComments((currComments) => {
+              return [comment, ...currComments];
+            });
+          });
+        }
       }}
     >
       <label>
-        Write comment:
+        have your say here:
         <input
           type="text"
           onChange={(event) => {
@@ -31,7 +30,7 @@ export default function PostComment({ article_id, setComments }) {
           }}
         />
       </label>
-      <button>Post</button>
+      <button>post</button>
     </form>
   );
 }
