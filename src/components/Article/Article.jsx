@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { fetchArticle } from "../../api";
-import Comments from "../Comment.jsx/Comments";
+import { fetchArticle, updateVote } from "../../api";
+import Comments from "../Comment/Comments";
 import { Link } from "react-router-dom";
 
 export default function Article({ showComments }) {
@@ -22,11 +22,11 @@ export default function Article({ showComments }) {
   }
 
   useEffect(() => {
-    fetchArticle(article_id).then((articles) => {
-      setArticle(articles);
+    fetchArticle(article_id).then((userVote) => {
+      setArticle(userVote);
       setIsLoading(false);
     });
-  }, [article_id]);
+  }, [article_id, article]);
 
   if (isLoading) return <p>loading article...</p>;
   const date = new Date(article.created_at);
@@ -42,14 +42,29 @@ export default function Article({ showComments }) {
       </div>
       <p>{article.body}</p>
       <div>
+        <button
+          onClick={() => {
+            updateVote(article.article_id, 1);
+          }}
+        >
+          👍🏼
+        </button>{" "}
+        <button
+          onClick={() => {
+            updateVote(article.article_id, -1);
+          }}
+        >
+          👎🏼
+        </button>
         <b>{article.votes} votes</b> | <b>💬{article.comment_count} comments</b>
       </div>
-          
+
       <button
         onClick={() => {
           setIsCommentVisible(!isCommentVisible);
         }}
-      >View Comments...
+      >
+        Comments...
         <Link to={`/articles/${article.article_id}/comments`}></Link>
       </button>
       {getShowComments()}

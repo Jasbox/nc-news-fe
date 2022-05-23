@@ -30,7 +30,8 @@ export default function ToggleUser() {
   } else {
     return (
       <div>
-        Logged in as: <b>{users}</b>
+        User logged in as: <b>{users}</b>
+        <br />
         <button
           onClick={() => {
             setUsers();

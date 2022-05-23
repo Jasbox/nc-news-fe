@@ -14,13 +14,20 @@ export default function Topic() {
   return (
     <section>
       <div>
+       
+        <Link to={"/"}>all news</Link>
         {topics.map((topic) => {
-          return (
-            <div key={topic.slug}>
+            return (
+                
+                <div  key={topic.slug}>
               <Link to={`/topics/${topic.slug}`}>{topic.slug}</Link>
             </div>
+        
           );
         })}
+        
+        
+        
       </div>
     </section>
   );

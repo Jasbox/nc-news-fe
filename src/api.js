@@ -43,3 +43,7 @@ export function postComment(article_id, body, username) {
         return data.comment
     })
 }
+
+export function updateVote(article_id, inc) {
+    return newsApi.patch(`/articles/${article_id}`, {inc_votes: inc})
+}
