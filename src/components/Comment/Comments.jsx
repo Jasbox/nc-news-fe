@@ -27,7 +27,7 @@ export default function Comments({ article_id }) {
                     })
                 })
                 alert("comment deleted")
-            }}>Delete</button>
+            }}>delete</button>
         )
     }
   }
@@ -44,7 +44,7 @@ export default function Comments({ article_id }) {
     <div>
         <button onClick={()=>{
             SetPostedComment(!postedComment)
-        }}>Comment is free...</button>
+        }}>add comment ...</button>
         {showPostedComment()}
 
       {comments.map((comment) => {
