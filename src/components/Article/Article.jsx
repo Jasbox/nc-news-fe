@@ -9,7 +9,12 @@ export default function Article({ showComments }) {
   const [article, setArticle] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const [vote, setVote] = useState() //
+  const [vote, setVote] = useState(0) //
+  const [disable, setDisable] = useState(false);
+
+
+ 
+
 
   if (showComments === undefined) {
     showComments = false;
@@ -49,18 +54,22 @@ export default function Article({ showComments }) {
       </div>
       <p>{article.body}</p>
       <div>
-        <button
+        <button disabled={disable}
           onClick={() => {
             updateVote(article.article_id, 1);
             updateVoteLocally(1)
+            setDisable(true)
+        
           }}
         >
           👍🏼
         </button>{" "}
-        <button
+        <button disabled={disable}
           onClick={() => {
             updateVote(article.article_id, -1);
             updateVoteLocally(-1)
+            setDisable(true)
+            
           }}
         >
           👎🏼
