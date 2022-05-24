@@ -9,6 +9,8 @@ export default function Article({ showComments }) {
   const [article, setArticle] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  const [vote, setVote] = useState() //
+
   if (showComments === undefined) {
     showComments = false;
   }
@@ -21,12 +23,17 @@ export default function Article({ showComments }) {
     }
   }
 
+  function updateVoteLocally(voteCrement) {
+            setVote(voteCrement + vote)
+  }
+
   useEffect(() => {
     fetchArticle(article_id).then((userVote) => {
       setArticle(userVote);
       setIsLoading(false);
+      setVote(userVote.votes)
     });
-  }, [article_id, article]);
+  }, [article_id]);
 
   if (isLoading) return <p>loading article...</p>;
   const date = new Date(article.created_at);
@@ -45,6 +52,7 @@ export default function Article({ showComments }) {
         <button
           onClick={() => {
             updateVote(article.article_id, 1);
+            updateVoteLocally(1)
           }}
         >
           👍🏼
@@ -52,11 +60,12 @@ export default function Article({ showComments }) {
         <button
           onClick={() => {
             updateVote(article.article_id, -1);
+            updateVoteLocally(-1)
           }}
         >
           👎🏼
         </button>
-        <b>{article.votes} votes</b> | <b>💬{article.comment_count} comments</b>
+        <b>{vote} votes</b> | <b>💬{article.comment_count} comments</b>
       </div>
 
       <button
