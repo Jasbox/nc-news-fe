@@ -13,14 +13,14 @@ export default function Topic() {
 
   return (
     <section>
-      <div>
+      <div >
        
-        <Link to={"/"}>all news</Link>
+        <Link to={"/"} style={{textDecoration: "none"}}>all news</Link>
         {topics.map((topic) => {
             return (
                 
                 <div  key={topic.slug}>
-              <Link to={`/topics/${topic.slug}`}>{topic.slug}</Link>
+              <Link to={`/topics/${topic.slug}`} style={{textDecoration: "none"}}>{topic.slug}</Link>
             </div>
         
           );
