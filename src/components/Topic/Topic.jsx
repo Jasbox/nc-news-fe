@@ -13,21 +13,22 @@ export default function Topic() {
 
   return (
     <section>
-      <div >
-       
-        <Link to={"/"} style={{textDecoration: "none"}}>all news</Link>
+      <div>
+        <Link to={"/"} style={{ textDecoration: "none" }}>
+          all news
+        </Link>
         {topics.map((topic) => {
-            return (
-                
-                <div  key={topic.slug}>
-              <Link to={`/topics/${topic.slug}`} style={{textDecoration: "none"}}>{topic.slug}</Link>
+          return (
+            <div key={topic.slug}>
+              <Link
+                to={`/topics/${topic.slug}`}
+                style={{ textDecoration: "none" }}
+              >
+                {topic.slug}
+              </Link>
             </div>
-        
           );
         })}
-        
-        
-        
       </div>
     </section>
   );
