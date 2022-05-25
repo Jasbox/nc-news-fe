@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchArticles } from "../../api";
+import ErrorPage from "../Error/ErrorPage";
 import ArticleCard from "./ArticleCard";
 import SortArticle from "./SortArticle";
 
@@ -10,17 +11,22 @@ export default function ArticleList() {
     const [isLoading, setIsLoading] = useState(true)
     const [sortType, setSortType] =useState("created_at")
     const [sortOrder, setSortOrder] = useState("desc")
+    const [error, setError] = useState(null)
 
     useEffect(() => {
         fetchArticles(topic, sortType, sortOrder).then((allArticles) => {
             setArticles(allArticles)
             setIsLoading(false)
+        }).catch(err => {
+            setError(err)
+            setIsLoading(false)
         })
     }, [topic, sortType, sortOrder])
 
     if (isLoading) return <p>loading articles...</p>
+   if (error) return <ErrorPage />
 
-    return (
+     return (
         <section>
             <SortArticle 
                         sortType={sortType}

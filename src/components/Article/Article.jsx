@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { fetchArticle, updateVote } from "../../api";
 import Comments from "../Comment/Comments";
 import { Link } from "react-router-dom";
+import ErrorPage from "../Error/ErrorPage";
 
 export default function Article({ showComments }) {
   const { article_id } = useParams();
@@ -11,6 +12,7 @@ export default function Article({ showComments }) {
 
   const [vote, setVote] = useState(0) //
   const [disable, setDisable] = useState(false);
+  const [error, setError] = useState(null);
 
 
  
@@ -37,10 +39,16 @@ export default function Article({ showComments }) {
       setArticle(userVote);
       setIsLoading(false);
       setVote(userVote.votes)
+    }).catch(err => {
+      setError(err)
+      setIsLoading(false);
     });
+    ;
   }, [article_id]);
 
   if (isLoading) return <p>loading article...</p>;
+  if (error) return <ErrorPage />
+
   const date = new Date(article.created_at);
 
   return (
