@@ -5,7 +5,7 @@ export default function ArticleCard({ article }) {
   return (
     <section>
       <div className="article-list" key={article.article_id}>
-          <Link to={`/articles/${article.article_id}`}>
+          <Link to={`/articles/${article.article_id}`} style={{textDecoration: "none"}}>
         <h3>{article.title}</h3>
           </Link>
         <h5>
@@ -13,10 +13,10 @@ export default function ArticleCard({ article }) {
             article.author
           } at ${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`}
         </h5>
-        <p>💬 {article.comment_count} comments</p>
         <p>
           <b>{article.votes} votes</b>
         </p>
+        <p>💬 <b>{article.comment_count}</b> comments</p>
       </div>
     </section>
   );
