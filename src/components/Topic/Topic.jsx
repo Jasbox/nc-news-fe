@@ -13,10 +13,11 @@ export default function Topic() {
 
   return (
     <section>
-      <div>
+      <ul className="section__topic">
         <Link to={"/"} style={{ textDecoration: "none" }}>
-          all news
+          <li>all news</li>
         </Link>
+
         {topics.map((topic) => {
           return (
             <div key={topic.slug}>
@@ -24,12 +25,12 @@ export default function Topic() {
                 to={`/topics/${topic.slug}`}
                 style={{ textDecoration: "none" }}
               >
-                {topic.slug}
+                <li>{topic.slug}</li>
               </Link>
             </div>
           );
         })}
-      </div>
+      </ul>
     </section>
   );
 }

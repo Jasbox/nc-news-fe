@@ -10,13 +10,9 @@ export default function Article({ showComments }) {
   const [article, setArticle] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const [vote, setVote] = useState(0) //
+  const [vote, setVote] = useState(0); //
   const [disable, setDisable] = useState(false);
   const [error, setError] = useState(null);
-
-
- 
-
 
   if (showComments === undefined) {
     showComments = false;
@@ -31,53 +27,54 @@ export default function Article({ showComments }) {
   }
 
   function updateVoteLocally(voteCrement) {
-            setVote(voteCrement + vote)
+    setVote(voteCrement + vote);
   }
 
   useEffect(() => {
-    fetchArticle(article_id).then((userVote) => {
-      setArticle(userVote);
-      setIsLoading(false);
-      setVote(userVote.votes)
-    }).catch(err => {
-      setError(err)
-      setIsLoading(false);
-    });
-    ;
+    fetchArticle(article_id)
+      .then((userVote) => {
+        setArticle(userVote);
+        setIsLoading(false);
+        setVote(userVote.votes);
+      })
+      .catch((err) => {
+        setError(err);
+        setIsLoading(false);
+      });
   }, [article_id]);
 
   if (isLoading) return <p>loading article...</p>;
-  if (error) return <ErrorPage />
+  if (error) return <ErrorPage />;
 
   const date = new Date(article.created_at);
 
   return (
-    <div className="article-page-body">
+    <div className="article_page">
       <h2>{article.title}</h2>
-      <div>
+      <div className="article_page_author">
         <b>by: </b>
         {article.author} | <b>in: </b>
         {article.topic} | <b>at: </b>
         {`${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`}
       </div>
-      <p>{article.body}</p>
+      <p className="article_page_body">{article.body}</p>
       <div>
-        <button disabled={disable}
+        <button
+          disabled={disable}
           onClick={() => {
             updateVote(article.article_id, 1);
-            updateVoteLocally(1)
-            setDisable(true)
-        
+            updateVoteLocally(1);
+            setDisable(true);
           }}
         >
           👍🏼
         </button>{" "}
-        <button disabled={disable}
+        <button
+          disabled={disable}
           onClick={() => {
             updateVote(article.article_id, -1);
-            updateVoteLocally(-1)
-            setDisable(true)
-            
+            updateVoteLocally(-1);
+            setDisable(true);
           }}
         >
           👎🏼
@@ -86,6 +83,7 @@ export default function Article({ showComments }) {
       </div>
 
       <button
+        className="comment-button"
         onClick={() => {
           setIsCommentVisible(!isCommentVisible);
         }}

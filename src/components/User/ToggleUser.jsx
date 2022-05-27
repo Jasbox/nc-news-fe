@@ -3,7 +3,7 @@ import { UserContext } from "./UserContext";
 
 export default function ToggleUser() {
   const { users, setUsers } = useContext(UserContext);
-  
+
   const [user, setUser] = useState("");
 
   if (users === undefined || users === "") {
@@ -19,7 +19,6 @@ export default function ToggleUser() {
           Log in:
           <input
             onChange={(event) => {
-              
               setUser(event.target.value);
             }}
           />
