@@ -24,6 +24,7 @@ export default function PostComment({ article_id, setComments }) {
       <label>
         have your say here:
         <input
+          className="comment-box"
           type="text"
           onChange={(event) => {
             setUserComment(event.target.value);

@@ -1,13 +1,20 @@
 import { Link } from "react-router-dom";
-import Navbar from "./Navbar";
+
+import ToggleUser from "../User/ToggleUser";
+import Topic from "../Topic/Topic";
 
 export default function Header() {
-    return(
-        <header>
+  return (
+    <header className="Header">
+      <div className="ToggleUser">
+        <ToggleUser />
+      </div>
+      <img src={"/logo192.png"} alt="react logo" width="100px" />
 
-        <img src={'/logo192.png'} alt="react logo" width="100px"/>
-        <Link to="/" style={{textDecoration: "none"}} ><h1>NC NEWS</h1></Link>
-        <Navbar />
-        </header>
-    )
+      <Link to="/" style={{ textDecoration: "none" }}>
+        <h1>NC NEWS</h1>
+      </Link>
+      <Topic />
+    </header>
+  );
 }

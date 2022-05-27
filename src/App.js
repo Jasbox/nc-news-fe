@@ -5,7 +5,7 @@ import Article from "./components/Article/Article";
 import ArticleList from "./components/Article/ArticleList";
 import ErrorPage from "./components/Error/ErrorPage";
 import Header from "./components/Header/Header";
-import ToggleUser from "./components/User/ToggleUser";
+
 import { UserContext } from "./components/User/UserContext";
 
 function App() {
@@ -15,7 +15,6 @@ function App() {
     <UserContext.Provider value={{ users, setUsers }}>
       <div className="App">
         <Header />
-        <ToggleUser />
 
         <Routes>
           <Route path="/" element={<ArticleList />} />
@@ -24,7 +23,6 @@ function App() {
           <Route path="/topics/:topic" element={<ArticleList />} />
           <Route path="/articles/:article_id" element={<Article />} />
           <Route path="/articles/:article_id/comments" element={<Article />} />
-          
         </Routes>
       </div>
     </UserContext.Provider>
