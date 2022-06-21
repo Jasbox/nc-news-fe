@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import {FaRegCommentDots} from 'react-icons/fa'
 
 export default function ArticleCard({ article }) {
   const date = new Date(article.created_at);
@@ -17,7 +18,7 @@ export default function ArticleCard({ article }) {
           } at ${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`}
         </h5>
         <p className="article_card_vote">
-          <b>{article.votes}</b> votes 💬 <b>{article.comment_count}</b>{" "}
+          <b>{article.votes}</b> votes <FaRegCommentDots/> <b>{article.comment_count}</b>{" "}
           comments
         </p>
       </div>

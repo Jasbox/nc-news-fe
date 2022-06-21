@@ -9,7 +9,7 @@ export default function Header() {
       <div className="ToggleUser">
         <ToggleUser />
       </div>
-      <img src={"/logo192.png"} alt="react logo" width="100px" />
+      <img src={"/newslogo.png"} alt="news logo" width="100px" height="auto" />
 
       <Link to="/" style={{ textDecoration: "none" }}>
         <h1>NC NEWS</h1>
