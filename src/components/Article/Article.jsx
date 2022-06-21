@@ -5,6 +5,9 @@ import Comments from "../Comment/Comments";
 import { Link } from "react-router-dom";
 import ErrorPage from "../Error/ErrorPage";
 
+import {FaRegCommentDots} from 'react-icons/fa'
+import {FiThumbsUp,FiThumbsDown} from 'react-icons/fi'
+
 export default function Article({ showComments }) {
   const { article_id } = useParams();
   const [article, setArticle] = useState([]);
@@ -67,7 +70,7 @@ export default function Article({ showComments }) {
             setDisable(true);
           }}
         >
-          👍🏼
+          <FiThumbsUp/>
         </button>{" "}
         <button
           disabled={disable}
@@ -77,9 +80,9 @@ export default function Article({ showComments }) {
             setDisable(true);
           }}
         >
-          👎🏼
+          <FiThumbsDown/>
         </button>
-        <b>{vote} votes</b> | <b>💬{article.comment_count} comments</b>
+        <b>{vote} votes</b> | <b> <FaRegCommentDots/> {article.comment_count} comments</b>
       </div>
 
       <button
