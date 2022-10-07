@@ -1,15 +1,19 @@
 .App {
   text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 25px;
+  max-width: fit-content;
 }
 
 * {
-  background-color: #e3e0cf;
-  color: black;
+  background-color: white;
+  color: #003459;
 }
 
 .Header .ToggleUser {
   text-align: right;
-  font-size: small;
+  font-size: large;
   padding-top: 20px;
   padding-right: 20px;
 }
@@ -25,8 +29,10 @@ li {
   gap: 25px;
   width: fit-content;
   margin: 30px auto 40px auto;
-  font-size: 1.2rem;
+  font-size: 1.7rem;
+  font-style: italic;
   font-weight: 600;
+  
 }
 
 .sorting {
@@ -38,8 +44,8 @@ li {
 /* Each news card on home page */
 .article_card {
   border-style: outset;
-  padding: auto;
-  margin: 10px;
+  padding: 20px;
+  margin: 20px;
 }
 
 .article_card_vote {
@@ -49,12 +55,14 @@ li {
 /* Single article page */
 
 .article_page {
-  text-align: center;
+  text-align: justify;
   padding: 15px;
+  max-width: fit-content;
 }
 
 .article_page_body {
   font-size: larger;
+  
 }
 
 .article_page_author {
@@ -71,13 +79,13 @@ li {
 }
 
 .comment-button {
-  border-radius: 20px;
+  border-radius: 5px;
   width: fit-content;
   margin: 7px auto;
 }
 
 .comment-box {
-  border-radius: 20px;
+  border-radius: 5px;
 
   padding: 20px;
   width: 200px;

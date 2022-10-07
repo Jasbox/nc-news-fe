@@ -15,7 +15,7 @@ export default function Topic() {
     <section>
       <ul className="section__topic">
         <Link to={"/"} style={{ textDecoration: "none" }}>
-          <li>all news</li>
+          <li>news</li>
         </Link>
 
         {topics.map((topic) => {
