@@ -3,7 +3,7 @@
   margin-left: auto;
   margin-right: auto;
   padding-bottom: 25px;
-  max-width: fit-content;
+  max-width:  50%;
 }
 
 * {
@@ -55,7 +55,7 @@ li {
 /* Single article page */
 
 .article_page {
-  text-align: justify;
+  text-align: center;
   padding: 15px;
   max-width: fit-content;
 }
